@@ -2,7 +2,7 @@ let _now: number;
 let _then: number;
 let _delta: number = 0;
 let _accumlatedTime: number = 0;
-let _fps: number = 60.0;
+const _fps: number = 60.0;
 let _fpsInterval: number = 0;
 
 function start(): void {
@@ -13,7 +13,7 @@ function start(): void {
 
 function loop(): void {
   _now = Date.now();
-  var elapsed = _now - _then;
+  let elapsed = _now - _then;
   _then = _now;
 
   _accumlatedTime += elapsed;
@@ -22,6 +22,7 @@ function loop(): void {
     _accumlatedTime = 0;
     update();
     requestAnimationFrame(loop);
+    return;
   }
 
   requestAnimationFrame(loop);
